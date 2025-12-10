@@ -2,7 +2,6 @@
 // VARIÁVEIS GLOBAIS E CONFIGURAÇÕES
 // ===================================================
 
-// Sua lista de produtos deve ser mantida aqui. Use a lista COMPLETA!
 let produtos = [ 
     "Abobrinha Itália","Abóbora Cabotia Fatiada","Abóbora Cabotia Processada","Abóbora Doce Fatiada",
     "Abóbora Madura Picada","Abóbora Paulista Picada","Alho Poró","Batata Pirulito","Berinjela","Beterraba",
@@ -268,6 +267,48 @@ document.getElementById("btnSalvarPDF").onclick = () => {
 };
 
 // ===================================================
+// FUNÇÃO DE EXPORTAÇÃO PARA CSV (EXCEL)
+// ===================================================
+
+function exportarParaCSV() {
+    const dataAtual = document.getElementById("dataTroca").value;
+    if (!dataAtual) return alert("Selecione a data antes de exportar o CSV.");
+
+    const { mercado, tipo } = getCurrentContext();
+    if (!mercado || !tipo) return alert("Selecione o Mercado e o Tipo (Estoque/Troca) antes de exportar o CSV.");
+
+    const tipoFormatado = tipo.charAt(0).toUpperCase() + tipo.slice(1);
+    const nomeArquivo = `${tipoFormatado}_${mercado}_${dataAtual.replace(/\//g, '-')}.csv`;
+
+    // 1. Cria o cabeçalho usando ponto e vírgula (padrão Brasil)
+    let csvContent = `Produto;${tipoFormatado}\n`;
+
+    // 2. Preenche o corpo dos dados (produtos já estão ordenados)
+    [...produtos].sort().forEach(p => {
+        const valor = estado[mercado]?.[p]?.[tipo] || 0;
+        csvContent += `${p};${valor}\n`;
+    });
+
+    // 3. Cria e faz o download do arquivo
+    
+    // O Blob é necessário para tratar a codificação corretamente (UTF-8) para o Excel
+    const blob = new Blob(["\uFEFF" + csvContent], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement("a");
+    
+    if (link.download !== undefined) {
+        const url = URL.createObjectURL(blob);
+        link.setAttribute("href", url);
+        link.setAttribute("download", nomeArquivo);
+        link.style.visibility = 'hidden';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    } else {
+        alert("Seu navegador não suporta download automático. Tente o PDF.");
+    }
+}
+
+// ===================================================
 // INICIALIZAÇÃO DA APLICAÇÃO
 // ===================================================
 
@@ -300,6 +341,8 @@ function iniciarApp() {
     buscarInput.oninput = () => renderizar(buscarInput.value); 
     
     btnAdicionarRapido.onclick = adicionarProdutoPelaBusca;
+
+    document.getElementById("btnExportarCSV").onclick = exportarParaCSV;
     
     document.getElementById("btnLimpar").onclick = () => {
         const confirmar = confirm("Tem certeza que deseja limpar TODOS os valores de Estoque e Troca do mercado atual?");

@@ -2,13 +2,12 @@
     --bg: #f7f7f7;
     --card: #ffffff;
     --border: #d1d1d1;
-    --accent: #16a34a; /* verde */
+    --accent: #16a34a;
     --accent-dark: #0f7f37;
     --text: #222;
     --text-light: #555;
 }
 
-/* NOVO: Aplica box-sizing em tudo para um modelo de caixa mais previsível */
 * {
     box-sizing: border-box;
 }
@@ -49,18 +48,14 @@ h1 {
     font-size: 1em;
 }
 
-/* NOVO: Estilo para os inputs/selects dentro dos filtros */
-/* Isso garante que eles tenham um padding básico */
 .header-filtros select,
 .header-filtros input[type="text"] {
     padding: 8px;
     border: 1px solid var(--border);
     border-radius: 8px;
     font-size: 1em;
-    min-width: 120px; /* Para dar uma largura mínima aos campos */
+    min-width: 120px;
 }
-
-/* ... restante do CSS (sem mais alterações significativas) ... */
 
 .lista {
     margin-top: 20px;
@@ -71,17 +66,13 @@ h1 {
 }
 
 .linha-com-acao {
-    /* Layout com 4 colunas: Nome, Estoque, Troca, Ação */
     grid-template-columns: 1fr 90px 90px 30px; 
 }
 
-/* NOVO ESTILO: Apenas uma coluna de Input e o botão de Excluir */
 .linha-single-input {
-    /* Layout com 3 colunas: Nome (1fr) | Valor (90px) | Ação (30px) */
     grid-template-columns: 1fr 90px 30px; 
 }
 
-/* Garanta que a classe base .linha use o display grid */
 .linha {
     display: grid;
     gap: 10px;
@@ -95,38 +86,32 @@ h1 {
 @media (max-width: 600px) {
     
     .container {
-        padding: 10px; /* Reduz o padding em telas pequenas */
+        padding: 10px;
     }
 
-    /* FILTROS (Mercado, Tipo, Data) */
     .header-filtros {
-        /* Garante que os filtros quebrem em colunas no mobile */
         flex-direction: column;
-        align-items: stretch !important; /* Estica os itens para a largura total */
-        gap: 10px !important; /* Reduz o espaço entre os blocos de filtro */
+        align-items: stretch !important; 
+        gap: 10px !important; 
     }
 
-    /* Garante que cada campo ocupe 100% da largura */
     .campo-mercado, .campo-tipo, .campo-data {
         width: 100%;
     }
     
-    /* Input/Select dentro dos filtros devem ter 100% de largura */
     .header-filtros select,
     .header-filtros input[type="text"] {
         width: 100%; 
-        min-width: unset; /* Remove largura mínima */
+        min-width: unset; 
     }
     
-    /* LISTA DE PRODUTOS */
-    /* Novo layout responsivo: Nome (1fr) | Valor (60px) | Ação (30px) */
     .linha-single-input {
         grid-template-columns: 1fr 60px 30px; 
     }
     
     /* BOTÕES */
     .btn, .btn-secundario, .btn-limpar {
-        padding: 12px; /* Reduz o padding dos botões */
+        padding: 12px;
         font-size: 1.1em;
     }
 }
@@ -142,7 +127,7 @@ h1 {
     text-align: center;
 }
 
-.btn, .btn-secundario, .btn-limpar {
+.btn, .btn-secundario, .btn-limpar, .btn-terciario {
     width: 100%;
     padding: 15px;
     border-radius: 10px;
@@ -167,6 +152,10 @@ h1 {
     color: #333;
     font-size: 1em;
 }
+.btn-terciario {
+    background: #333b8b;
+    color: white;
+}
 
 .btn-limpar {
     background: #ef4444;
@@ -177,15 +166,13 @@ h1 {
     background: #c53030;
 }
 
-
-/* Estilo para o novo botão de Excluir (X Vermelho) */
 .btn-excluir {
     background: none;
     border: none;
     cursor: pointer;
-    font-size: 1.8em; /* Deixa o X maior */
+    font-size: 1.8em;
     font-weight: bold;
-    color: #ef4444; /* Vermelho (cor do seu btn-limpar) */
+    color: #ef4444;
     padding: 0;
     height: 30px;
     width: 30px;
@@ -197,7 +184,7 @@ h1 {
 }
 
 .btn-excluir:hover {
-    background: rgba(239, 68, 68, 0.1); /* Um fundo vermelho bem suave ao passar o mouse */
+    background: rgba(239, 68, 68, 0.1);
 }
 
 .btn-acao:hover {
