@@ -8,6 +8,11 @@
     --text-light: #555;
 }
 
+/* NOVO: Aplica box-sizing em tudo para um modelo de caixa mais previsível */
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: Arial, sans-serif;
     background: var(--bg);
@@ -44,6 +49,19 @@ h1 {
     font-size: 1em;
 }
 
+/* NOVO: Estilo para os inputs/selects dentro dos filtros */
+/* Isso garante que eles tenham um padding básico */
+.header-filtros select,
+.header-filtros input[type="text"] {
+    padding: 8px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 1em;
+    min-width: 120px; /* Para dar uma largura mínima aos campos */
+}
+
+/* ... restante do CSS (sem mais alterações significativas) ... */
+
 .lista {
     margin-top: 20px;
     background: var(--card);
@@ -56,17 +74,62 @@ h1 {
     /* Layout com 4 colunas: Nome, Estoque, Troca, Ação */
     grid-template-columns: 1fr 90px 90px 30px; 
 }
-/* Mantenha o estilo .linha se ele tiver estilos base que você usa */
 
+/* NOVO ESTILO: Apenas uma coluna de Input e o botão de Excluir */
+.linha-single-input {
+    /* Layout com 3 colunas: Nome (1fr) | Valor (90px) | Ação (30px) */
+    grid-template-columns: 1fr 90px 30px; 
+}
+
+/* Garanta que a classe base .linha use o display grid */
 .linha {
     display: grid;
-    /* Linha antiga: grid-template-columns: 1fr 90px 90px; */
     gap: 10px;
     padding: 10px;
     align-items: center;
     border-bottom: 1px solid var(--border);
 }
-/* ... o restante do estilo .linha continua ... */
+
+
+/* AJUSTE RESPONSIVO GLOBAL */
+@media (max-width: 600px) {
+    
+    .container {
+        padding: 10px; /* Reduz o padding em telas pequenas */
+    }
+
+    /* FILTROS (Mercado, Tipo, Data) */
+    .header-filtros {
+        /* Garante que os filtros quebrem em colunas no mobile */
+        flex-direction: column;
+        align-items: stretch !important; /* Estica os itens para a largura total */
+        gap: 10px !important; /* Reduz o espaço entre os blocos de filtro */
+    }
+
+    /* Garante que cada campo ocupe 100% da largura */
+    .campo-mercado, .campo-tipo, .campo-data {
+        width: 100%;
+    }
+    
+    /* Input/Select dentro dos filtros devem ter 100% de largura */
+    .header-filtros select,
+    .header-filtros input[type="text"] {
+        width: 100%; 
+        min-width: unset; /* Remove largura mínima */
+    }
+    
+    /* LISTA DE PRODUTOS */
+    /* Novo layout responsivo: Nome (1fr) | Valor (60px) | Ação (30px) */
+    .linha-single-input {
+        grid-template-columns: 1fr 60px 30px; 
+    }
+    
+    /* BOTÕES */
+    .btn, .btn-secundario, .btn-limpar {
+        padding: 12px; /* Reduz o padding dos botões */
+        font-size: 1.1em;
+    }
+}
 
 .linha:last-child {
     border-bottom: none;
@@ -114,20 +177,6 @@ h1 {
     background: #c53030;
 }
 
-/* Responsivo */
-@media (max-width: 600px) {
-    .linha {
-        grid-template-columns: 1fr 70px 70px;
-    }
-}
-
-footer {
-    text-align: center;
-    margin-top: 40px;
-    padding: 20px;
-    font-size: 0.9em;
-    color: var(--text-light);
-}
 
 /* Estilo para o novo botão de Excluir (X Vermelho) */
 .btn-excluir {
@@ -153,4 +202,12 @@ footer {
 
 .btn-acao:hover {
     background: #f0f0f0;
+}
+
+footer {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px;
+    font-size: 0.9em;
+    color: var(--text-light);
 }

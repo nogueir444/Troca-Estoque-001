@@ -5,16 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Troca & Estoque</title>
 
-    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
 
-    <!-- FLATPICKR (calendário bonito) -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/material_green.css">
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/pt.js"></script>
-
-    <!-- HTML2PDF -->
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 
@@ -24,20 +21,34 @@
 
         <h1>Troca & Estoque</h1>
 
-        <!-- DATA -->
-        <label class="label">Data da Troca</label>
-        <input id="dataTroca" type="text" class="input" placeholder="Selecione a data">
+        <div class="header-filtros" style="display: flex; gap: 15px; align-items: flex-end; margin-bottom: 20px;">
+        
+            <div class="campo-mercado">
+                <label for="selecaoMercado">Mercado:</label>
+                <select id="selecaoMercado"></select> 
+            </div>
 
-        <!-- PESQUISA -->
+            <div class="campo-tipo">
+                <label for="selecaoTipo">Tipo:</label>
+                <select id="selecaoTipo">
+                    <option value="estoque">Estoque</option>
+                    <option value="troca">Troca</option>
+                </select>
+            </div>
+            
+            <div class="campo-data">
+                <label for="dataTroca">Data:</label>
+                <input type="text" id="dataTroca" placeholder="Selecione a data...">
+            </div>
+        </div>
+
         <label class="label">Pesquisar Produto</label>
         <input id="buscar" class="input" type="text" placeholder="Digite para pesquisar...">
 
         <button id="btnAdicionarRapido" class="btn-secundario" hidden>Adicionar Novo Produto</button>
 
-        <!-- LISTA -->
         <div id="listaProdutos" class="lista"></div>
 
-        <!-- BOTÕES -->
         <div class="botoes">
             <button id="btnLimpar" class="btn-limpar">Limpar Valores</button>
             <button id="btnSalvarPDF" class="btn">Salvar PDF</button>
