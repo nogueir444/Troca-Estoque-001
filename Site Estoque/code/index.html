@@ -21,26 +21,30 @@
 
         <h1>Troca & Estoque</h1>
 
-        <div class="header-filtros" style="display: flex; gap: 15px; align-items: flex-end; margin-bottom: 20px;">
-        
-            <div class="campo-mercado">
+        <div class="header-filtros" style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px;">
+
+            <div class="campo-mercado" style="width: 100%;">
                 <label for="selecaoMercado">Mercado:</label>
-                <select id="selecaoMercado"></select> 
+                <select id="selecaoMercado"></select>
             </div>
 
-            <div class="campo-tipo">
-                <label for="selecaoTipo">Tipo:</label>
-                <select id="selecaoTipo">
-                    <option value="estoque">Estoque</option>
-                    <option value="troca">Troca</option>
-                </select>
+            <div style="display: flex; gap: 15px; width: 100%;">
+                <div class="campo-tipo" style="flex: 1;">
+                    <label for="selecaoTipo">Tipo:</label>
+                    <select id="selecaoTipo">
+                        <option value="estoque">Estoque</option>
+                        <option value="troca">Troca</option>
+                    </select>
+                </div>
+
+                <div class="campo-data" style="flex: 1;">
+                    <label for="dataTroca">Data:</label>
+                    <input type="text" id="dataTroca" placeholder="Selecione a data...">
+                </div>
             </div>
-            
-            <div class="campo-data">
-                <label for="dataTroca">Data:</label>
-                <input type="text" id="dataTroca" placeholder="Selecione a data...">
-            </div>
+
         </div>
+
 
         <label class="label">Pesquisar Produto</label>
         <input id="buscar" class="input" type="text" placeholder="Digite para pesquisar...">
