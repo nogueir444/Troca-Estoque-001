@@ -3,7 +3,17 @@
 // ===================================================
 
 let produtos = [ 
-    "eu apaguei tudo"
+    "Abobrinha Itália","Abóbora Cabotia Fatiada","Abóbora Cabotia Processada","Abóbora Doce Fatiada",
+    "Abóbora Madura Picada","Abóbora Paulista Picada","Alho Poró","Batata Pirulito","Berinjela","Beterraba",
+    "Beterraba Ralada","Brócolis/Couve Flor Picado","Cebola Bandeja","Cebola Kg","Cebola Roxa Bandeja",
+    "Chuchu","Cenoura Processada","Cenoura Ralada","Cenoura em Cubos","Cenoura/Chuchu Processados",
+    "Couve-flor","Couve Picada","Ervilha Torta","Feijão Fava","Jiló","Limão Cravo","Milho Verde",
+    "Mandioquinha Salsa Bandeja","Mandioquinha Salsa Processada","Mandioquinha a vácuo","Pepino","Pepino Japonês",
+    "Pimenta Americana","Pimenta Bico Doce","Pimenta Cambuci","Pimenta Dedo de Moça","Pimentão Colorido",
+    "Pimentão Verde","Quiabo","Rabanete","Tomate 400g","Tomate 800g","Tomate Grape","Tomate Cereja","Vagem",
+    "Vagem Picada","Repolho Verde Picado","Repolho Roxo Picado","Repolho Verde/Roxo Picado","Salada Mista",
+    "Salada Primavera","Salada Tropical","Salsa","Seleta de Legumes","Morango","Morango Fondue","Morango Congelado",
+    "Cheiro Verde Picado","Couve Flor","Couve Flor Picada"
 ]; 
 // Lista de mercados solicitada
 const mercados = ["Mercado A", "Mercado B", "Mercado C", "Mercado D", "Mercado E", "Mercado F"];
