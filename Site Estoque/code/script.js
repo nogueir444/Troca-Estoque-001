@@ -2,6 +2,26 @@
 // VARIÁVEIS GLOBAIS E CONFIGURAÇÕES
 // ===================================================
 
+const VERSAO_ATUAL = '2.0';
+
+// Ao carregar o site:
+const versaoSalva = localStorage.getItem('versao_app');
+
+if (versaoSalva !== VERSAO_ATUAL) {
+    // A versão mudou! Limpar tudo.
+    console.log('Nova versão detectada. Limpando cache local...');
+    
+    // Opção A: Limpar tudo (Drástico, mas resolve)
+    localStorage.clear(); 
+    sessionStorage.clear();
+
+    // Salva a nova versão para não limpar na próxima vez
+    localStorage.setItem('versao_app', VERSAO_ATUAL);
+    
+    // Opcional: Recarregar a página para garantir que pegue tudo fresco
+    window.location.reload();
+}
+
 let produtos = [ 
 "Abóbora Cabotiá Fatiada",
   "Abóbora Cabotiá Pedaço",
