@@ -98,6 +98,7 @@ let produtos = [
   "Salsão 230g",
   "Seleta de Legumes 230g",
   "Tomate Cereja 300g",
+  "Tomate Débora 400g",
   "Tomate Débora 800g",
   "Tomate Grape 300g",
   "Tomate Italiano 800g",
